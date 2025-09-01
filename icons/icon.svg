@@ -1,0 +1,27 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Calendar background -->
+  <rect x="16" y="24" width="96" height="88" rx="8" ry="8" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+
+  <!-- Calendar header -->
+  <rect x="16" y="24" width="96" height="20" rx="8" ry="8" fill="#357ABD"/>
+  <text x="64" y="38" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ACTIVITY</text>
+
+  <!-- Calendar grid lines -->
+  <line x1="16" y1="52" x2="112" y2="52" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="68" x2="112" y2="68" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="84" x2="112" y2="84" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="100" x2="112" y2="100" stroke="white" stroke-width="1"/>
+
+  <!-- Vertical lines -->
+  <line x1="48" y1="52" x2="48" y2="112" stroke="white" stroke-width="1"/>
+  <line x1="80" y1="52" x2="80" y2="112" stroke="white" stroke-width="1"/>
+
+  <!-- Sample dates -->
+  <text x="32" y="65" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">15</text>
+  <text x="64" y="65" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">16</text>
+  <text x="96" y="65" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">17</text>
+
+  <!-- Activity indicators (dots) -->
+  <circle cx="32" cy="75" r="2" fill="#FFC107"/>
+  <circle cx="64" cy="75" r="2" fill="#FFC107"/>
+</svg>

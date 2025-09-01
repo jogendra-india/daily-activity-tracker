@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Activity Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="month-navigation">
+                <button id="prevMonth" class="nav-btn" aria-label="Previous month">‹</button>
+                <h1 id="currentMonth" class="month-title">Month Year</h1>
+                <button id="nextMonth" class="nav-btn" aria-label="Next month">›</button>
+            </div>
+            <button id="exportBtn" class="export-btn" title="Export CSV">📥</button>
+        </header>
+
+        <!-- Two-column layout -->
+        <div class="main-content">
+            <!-- Left Column: Calendar -->
+            <div class="left-column">
+                <div class="working-days-summary" id="workingDaysSummary">
+                    <div class="summary-item">
+                        <span class="summary-label">Working Days:</span>
+                        <span class="summary-value" id="totalWorkingDays">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Completed:</span>
+                        <span class="summary-value" id="completedDays">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Pending:</span>
+                        <span class="summary-value" id="pendingDays">0</span>
+                    </div>
+                </div>
+
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Date buttons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Right Column: Activity Section -->
+            <div class="right-column">
+                <div class="activity-section">
+                    <div class="activity-header">
+                        <h2 id="selectedDate" class="selected-date">Select a date</h2>
+                        <div class="activity-actions">
+                            <button id="saveBtn" class="save-btn" disabled title="Save activity">💾</button>
+                            <button id="clearBtn" class="clear-btn" disabled title="Clear activity">🗑️</button>
+                        </div>
+                    </div>
+
+                    <textarea
+                        id="activityText"
+                        class="activity-textarea"
+                        placeholder="Enter your daily activities here..."
+                        rows="6"
+                        disabled
+                    ></textarea>
+
+                    <div class="character-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes-section">
+            <div class="notes-header">
+                <h2 class="notes-title">Notes</h2>
+                <!-- Add Note Button - Moved to top -->
+                <div class="add-note-container">
+                    <button id="addNoteBtn" class="add-note-btn-top" title="Add new note">
+                        <span class="plus-icon">+</span>
+                        <span class="add-text">Add Note</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="notesContainer" class="notes-container">
+                <!-- Notes will be dynamically added here -->
+            </div>
+
+            <!-- Code formatting toolbar -->
+            <div class="code-toolbar" id="codeToolbar" style="display: none;">
+                <button class="toolbar-btn" id="codeBtn" title="Toggle code for selected text">💻 Code</button>
+                <button class="toolbar-btn" id="boldBtn" title="Make selected text bold">**B**</button>
+                <button class="toolbar-btn" id="italicBtn" title="Make selected text italic">I</button>
+                <span class="toolbar-hint">Select text and click buttons, or press Ctrl+B for bold</span>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <a href="https://erp.ksolves.com/web#action=375&model=account.analytic.line&view_type=list&cids=1&menu_id=231"
+               target="_blank"
+               class="erp-link"
+               title="Open ERP Timesheet">
+                @https://erp.ksolves.com/web#action=375&model=account.analytic.line&view_type=list&cids=1&menu_id=231
+            </a>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
