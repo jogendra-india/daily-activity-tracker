@@ -358,7 +358,7 @@ class DailyActivityTracker {
         console.log('Month key to search:', currentMonthKey);
         console.log('Available activities count:', Object.keys(this.activities).length);
         console.log('Available activity keys:', Object.keys(this.activities));
-this 
+this
         // Debug: Show all activities with their content
         Object.entries(this.activities).forEach(([dateKey, activity]) => {
             console.log(`Activity ${dateKey}: "${activity?.substring(0, 50)}..." (length: ${activity?.length || 0})`);
@@ -830,7 +830,7 @@ this
                 <textarea
                     class="note-textarea"
                     data-note-id="${note.id}"
-                    placeholder="Enter your note here... Double-click preview to edit, type \code for code block"
+                    placeholder="Enter your note here... Double-click preview to edit, type \\code for code block"
                     rows="3"
                 >${note.content}</textarea>
 
