@@ -939,7 +939,6 @@ this
 
         editBtn.addEventListener('click', () => this.applyCodeFormatting(textarea));
         deleteBtn.addEventListener('click', () => this.deleteNote(note.id));
-        collapseBtn.addEventListener('click', () => this.toggleNoteCollapse(note.id));
 
         // Add double-click handler to preview for editing
         const preview = noteItem.querySelector('.note-preview');
