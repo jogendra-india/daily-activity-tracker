@@ -1130,3 +1130,162 @@ body {
         opacity: 0;
     }
 }
+
+/* ERP Configuration Section */
+.erp-config-section {
+    padding: 12px 16px;
+    border-top: 1px solid #e9ecef;
+    background: #f8f9fa;
+}
+
+.erp-config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.erp-config-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.erp-config-toggle-btn {
+    background: none;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #6c757d;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.erp-config-toggle-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.erp-config-panel {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.erp-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.erp-url-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #495057;
+    background: white;
+}
+
+.erp-url-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.save-erp-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+}
+
+.save-erp-btn:hover {
+    background: #218838;
+    transform: translateY(-1px);
+}
+
+.erp-hint {
+    font-size: 11px;
+    color: #6c757d;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.erp-link-container {
+    margin-top: 8px;
+}
+
+.erp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.erp-link:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.erp-link-icon {
+    font-size: 14px;
+}
+
+.erp-link-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+/* Responsive adjustments for ERP section */
+@media (max-width: 600px) {
+    .erp-config-section {
+        padding: 10px 12px;
+    }
+
+    .erp-input-group {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .erp-url-input {
+        width: 100%;
+    }
+
+    .erp-link-text {
+        max-width: 120px;
+    }
+}

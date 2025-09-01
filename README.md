@@ -69,8 +69,11 @@ A professional and robust Chrome extension for tracking daily activities with a 
 - Perfect for monthly reporting and analysis
 
 ### ERP Integration
-- **Persistent Link**: Quick access to your ERP timesheet system
+- **Configurable Link**: Set up your own ERP timesheet URL via the ⚙️ settings button
+- Click the gear icon in the ERP section at the bottom to configure your link
+- URL is saved locally and persists across browser sessions
 - Opens in new tab for easy switching between activity logging and ERP entry
+- Supports any ERP system with web-based timesheet functionality
 
 ## Technical Details
 

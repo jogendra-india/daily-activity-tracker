@@ -93,12 +93,35 @@
         </div>
 
         <footer class="footer">
-            <a href="https://erp.ksolves.com/web#action=375&model=account.analytic.line&view_type=list&cids=1&menu_id=231"
-               target="_blank"
-               class="erp-link"
-               title="Open ERP Timesheet">
-                @https://erp.ksolves.com/web#action=375&model=account.analytic.line&view_type=list&cids=1&menu_id=231
-            </a>
+            <div class="erp-config-section">
+                <div class="erp-config-header">
+                    <span class="erp-config-title">ERP Timesheet Link</span>
+                    <button id="erpConfigToggle" class="erp-config-toggle-btn" title="Configure ERP link">⚙️</button>
+                </div>
+
+                <div id="erpConfigPanel" class="erp-config-panel" style="display: none;">
+                    <div class="erp-input-group">
+                        <input
+                            type="url"
+                            id="erpUrlInput"
+                            class="erp-url-input"
+                            placeholder="Enter your ERP timesheet URL"
+                            title="Paste your ERP timesheet URL here"
+                        >
+                        <button id="saveErpUrl" class="save-erp-btn" title="Save ERP URL">💾</button>
+                    </div>
+                    <div class="erp-hint">
+                        Example: https://your-erp.com/web#action=375&model=account.analytic.line&view_type=list
+                    </div>
+                </div>
+
+                <div id="erpLinkContainer" class="erp-link-container" style="display: none;">
+                    <a id="erpLink" href="#" target="_blank" class="erp-link" title="Open ERP Timesheet">
+                        <span class="erp-link-icon">📊</span>
+                        <span class="erp-link-text">Open ERP Timesheet</span>
+                    </a>
+                </div>
+            </div>
         </footer>
     </div>
 

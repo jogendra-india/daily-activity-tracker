@@ -7,12 +7,14 @@ class DailyActivityTracker {
         this.activities = {};
         this.notes = [];
         this.scrollPosition = 0;
+        this.erpUrl = '';
         this.init();
     }
 
     async init() {
         await this.loadActivities();
         await this.loadNotes();
+        await this.loadErpConfig();
         this.setupEventListeners();
         this.renderCalendar();
         this.updateSelectedDateDisplay();
@@ -33,6 +35,26 @@ class DailyActivityTracker {
 
         // Notes buttons
         document.getElementById('addNoteBtn').addEventListener('click', () => this.addNote());
+
+        // ERP Configuration buttons
+        const erpConfigToggle = document.getElementById('erpConfigToggle');
+        if (erpConfigToggle) {
+            erpConfigToggle.addEventListener('click', () => this.toggleErpConfigPanel());
+        }
+
+        const saveErpUrl = document.getElementById('saveErpUrl');
+        if (saveErpUrl) {
+            saveErpUrl.addEventListener('click', () => this.saveErpUrl());
+        }
+
+        const erpUrlInput = document.getElementById('erpUrlInput');
+        if (erpUrlInput) {
+            erpUrlInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    this.saveErpUrl();
+                }
+            });
+        }
 
         // Toolbar buttons
         const boldBtn = document.getElementById('boldBtn');
@@ -436,6 +458,83 @@ this
                 resolve();
             });
         });
+    }
+
+    // ERP Configuration methods
+    async loadErpConfig() {
+        return new Promise((resolve) => {
+            chrome.storage.local.get(['erpUrl'], (result) => {
+                if (chrome.runtime.lastError) {
+                    console.error('Error loading ERP config:', chrome.runtime.lastError);
+                } else {
+                    this.erpUrl = result.erpUrl || '';
+                    this.updateErpLink();
+                }
+                resolve();
+            });
+        });
+    }
+
+    saveErpUrl() {
+        const erpUrlInput = document.getElementById('erpUrlInput');
+        if (!erpUrlInput) return;
+
+        const newUrl = erpUrlInput.value.trim();
+
+        // Basic URL validation
+        if (newUrl && !newUrl.match(/^https?:\/\/.+/)) {
+            alert('Please enter a valid URL starting with http:// or https://');
+            return;
+        }
+
+        this.erpUrl = newUrl;
+
+        // Save to chrome storage
+        chrome.storage.local.set({ erpUrl: this.erpUrl }, () => {
+            if (chrome.runtime.lastError) {
+                console.error('Error saving ERP URL:', chrome.runtime.lastError);
+                alert('Failed to save ERP URL. Please try again.');
+            } else {
+                this.updateErpLink();
+                this.showToast('ERP URL saved successfully!');
+                // Hide the config panel after saving
+                this.toggleErpConfigPanel(false);
+            }
+        });
+    }
+
+    toggleErpConfigPanel(forceShow = null) {
+        const configPanel = document.getElementById('erpConfigPanel');
+        if (!configPanel) return;
+
+        const isVisible = configPanel.style.display !== 'none';
+        const shouldShow = forceShow !== null ? forceShow : !isVisible;
+
+        configPanel.style.display = shouldShow ? 'block' : 'none';
+
+        // If showing, focus the input field and pre-fill with current URL
+        if (shouldShow) {
+            const erpUrlInput = document.getElementById('erpUrlInput');
+            if (erpUrlInput) {
+                erpUrlInput.value = this.erpUrl || '';
+                erpUrlInput.focus();
+                erpUrlInput.select();
+            }
+        }
+    }
+
+    updateErpLink() {
+        const erpLinkContainer = document.getElementById('erpLinkContainer');
+        const erpLink = document.getElementById('erpLink');
+
+        if (!erpLinkContainer || !erpLink) return;
+
+        if (this.erpUrl) {
+            erpLink.href = this.erpUrl;
+            erpLinkContainer.style.display = 'block';
+        } else {
+            erpLinkContainer.style.display = 'none';
+        }
     }
 
     saveNotes() {
